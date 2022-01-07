@@ -1,13 +1,16 @@
 import React from 'react';
+
+import { Label } from './Label';
 import { Content } from './Content';
 import { Input } from './Input';
-import { Label } from './Label';
+import { Error } from './Error';
 
-const Text = ({label, type, name}) => {
+const Text = ({label, type, name, register, error}) => {
     return (
         <Label>
             <Content>{label}</Content>
-            <Input type={type} name={name}/>
+            <Input type={type} {...register} />
+            {error && <Error>{error}</Error>}
         </Label>
     );
 }

@@ -6,4 +6,6 @@ export const Label = styled.label`
     align-items: center;
 
     font-size: 35px;
+
+    margin-bottom: 20px;
 `;

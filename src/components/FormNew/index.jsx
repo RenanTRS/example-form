@@ -16,7 +16,7 @@ export const FormNew = () => {
     const schema = yup.object({
         name: yup.string().min(2, 'Mínimo dois caracteres').required('Digite um nome'),
         email: yup.string().email('Digite um email válido').required('Digite um email')
-    });
+    }).required();
     const { register, handleSubmit, formState:{ errors } } = useForm({
         resolver: yupResolver(schema)
       });

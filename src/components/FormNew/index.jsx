@@ -22,14 +22,30 @@ export const FormNew = () => {
     const newUser = (user) => {
         console.log(user);
     }
+    async function teste(event){
+        //event.preventDefault()
+        let formData = {
+            name: event.target[0].value,
+            email: event.target[1].value,
+            cpf: event.target[2].value.replace(/\D/g, '')
+        }
+        const isValid = await schema.isValid(formData)
+        if(isValid){
+            console.log(formData);
+            handleSubmit(formData);
+        }
+    }
 
     return(
-        <Form onSubmit={handleSubmit(newUser)}>
-            <Field.Text label="Nome" type="text" register={register("name")} error={errors.name?.message}/>
-            <Field.Text label="Email" type="email" register={register("email")} error={errors.email?.message} />
-            <Field.Cpf label="CPF" register={register("cpf")} error={errors.cpf?.message}/>
+        <>
+            {/*<Form onSubmit={handleSubmit(newUser)}>*/}
+            <Form onSubmit={teste}>
+                <Field.Text label="Nome" type="text" register={register("name")} error={errors.name?.message}/>
+                <Field.Text label="Email" type="email" register={register("email")} error={errors.email?.message} />
+                <Field.Cpf label="CPF" register={register("cpf")} error={errors.cpf?.message}/>
 
-            <Button>Enviar</Button>
-        </Form>
+                <Button>Enviar</Button>
+            </Form>
+        </>
     );
 }
